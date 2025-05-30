@@ -1,8 +1,11 @@
 import express from "express";
-import { Request, Response } from "express";
+import { errorMiddleware } from "./middlewares/ErrorMiddleware";
+import { router } from "./routes";
 
 const app = express();
 app.use(express.json());
+app.use(router);
+app.use(errorMiddleware);
 
 const PORT = process.env.PORT || 3333;
 
